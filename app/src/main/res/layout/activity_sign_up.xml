@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/Emailedittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="아이디"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/passwordedittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="비밀번호"
+                android:inputType="textEmailAddress" />
+
+            <Button
+                android:id="@+id/signupbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="회원가입" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
