@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "368380456746",
+    "project_id": "hanstagram-2dcc5",
+    "storage_bucket": "hanstagram-2dcc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368380456746:android:21b3c2e6f58017aa073853",
+        "android_client_info": {
+          "package_name": "com.example.hanstagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368380456746-pfih7q9pam06i0gt49bmkvra6e2jq2ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAJlQItrYvyRe40T_0XJRRCM6-AGWPcgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368380456746-pfih7q9pam06i0gt49bmkvra6e2jq2ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
