@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
-        email_login_button.setOnClickListener {
+        email_signup_button.setOnClickListener {
             signinAndSignup()
         }
         google_sign_in_button.setOnClickListener {
@@ -41,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this,gso)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        moveMainPage(auth?.currentUser)
     }
 
     fun googleLogin() {
@@ -96,9 +101,6 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // 회원가입 성공시
                     moveMainPage(task.result?.user)
-                } else if (!task.exception?.message.isNullOrEmpty()) {
-                    // 에러메시지 출력
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                 } else {
                     // 이미 계정이 존재할경우
                     signinEmail()
@@ -122,6 +124,7 @@ class LoginActivity : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?){
         if(user != null){
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
 }

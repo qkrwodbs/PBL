@@ -1,5 +1,6 @@
 package com.example.hanstagram.navigation
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,9 +10,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hanstagram.R
 import com.example.hanstagram.navigation.model.ContentDTO
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_add_photo.*
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -50,18 +53,33 @@ class AddPhotoActivity : AppCompatActivity() {
             finish()
         }
     }
+
     fun contentUpload() {
         var timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         var imageFileName = "IMAGE_" + timestamp + "_.png"
 
         var storageRef = storage?.reference?.child("images")?.child(imageFileName)
 
-        storageRef?.putFile(photoUri!!)?.addOnSuccessListener {
-            storageRef.downloadUrl.addOnSuccessListener { uri ->
-                var contentDTO = ContentDTO()
+        storageRef?.putFile(photoUri!!)?.continueWithTask{task: Task<UploadTask.TaskSnapshot> ->
+            return@continueWithTask storageRef.downloadUrl
+        }?.addOnSuccessListener { uri ->
+            var contentDTO = ContentDTO()
 
+            contentDTO.imageUrl = uri.toString()
 
-            }
+            contentDTO.uid = auth?.currentUser?.uid
+
+            contentDTO.userId = auth?.currentUser?.email
+
+            contentDTO.explain = addphotp_edit_explain.text.toString()
+
+            contentDTO.timestamp = System.currentTimeMillis()
+
+            firestore?.collection("images")?.document()?.set(contentDTO)
+
+            setResult(Activity.RESULT_OK)
+
+            finish()
         }
     }
 }

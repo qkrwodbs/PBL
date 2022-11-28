@@ -50,7 +50,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/email_login_button"
+            android:id="@+id/email_signup_button"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="20dp"
@@ -59,16 +59,6 @@
             android:layout_marginBottom="35dp"
             android:text="@string/signin_email"
             android:theme="@style/ButtonStyle" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/btn_signin_facebook"
-            android:text="@string/signin_facebook"
-            android:textColor="@color/colorWhite"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
