@@ -8,16 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.hanstagram.R
 import com.example.hanstagram.navigation.model.ContentDTO
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_detail.view.*
+import kotlinx.android.synthetic.main.fragment_user.view.*
 import kotlinx.android.synthetic.main.item_detail.view.*
 
 class DetailViewFragment : Fragment(){
     var firestore : FirebaseFirestore? = null
     var uid : String? =null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +33,18 @@ class DetailViewFragment : Fragment(){
 
         view.detailviewfragment_recyclerview.adapter = DetailViewRecyclerViewAdapter()
         view.detailviewfragment_recyclerview.layoutManager = LinearLayoutManager(activity)
+        //getProfileImage()
         return view
     }
+//    fun getProfileImage() {
+//        firestore?.collection("profileImages")?.document(uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+//            if(documentSnapshot == null) return@addSnapshotListener
+//            if(documentSnapshot.data != null){
+//                var url = documentSnapshot?.data!!["image"]
+//                Glide.with(requireActivity()).load(url).apply(RequestOptions().circleCrop()).into(view?.detailviewitem_profile_image!!)
+//            }
+//        }
+//    }
     inner class DetailViewRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
         var contentUidList : ArrayList<String> = arrayListOf()

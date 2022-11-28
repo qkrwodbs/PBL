@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
             signinAndSignup()
         }
         google_sign_in_button.setOnClickListener {
-            Log.d(TAG,"버튼 눌림!")
             googleLogin()
         }
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -80,7 +79,8 @@ class LoginActivity : AppCompatActivity() {
                         // Login, 아이디와 패스워드가 맞았을 때
 //                    Toast.makeText(this,  "success", Toast.LENGTH_LONG).show()
                         moveMainPage(task.result?.user)
-                    } else {
+                    }
+                    else {
                         // Show the error message, 아이디와 패스워드가 틀렸을 때
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                     }
@@ -93,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun signinAndSignup() {
+        Log.d(TAG, "여기를 탔다1")
         auth?.createUserWithEmailAndPassword(
             email_edittext.text.toString(),
             password_edittext.text.toString()
@@ -100,8 +101,12 @@ class LoginActivity : AppCompatActivity() {
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // 회원가입 성공시
+                    Log.d(TAG, "여기를 탔다1")
                     moveMainPage(task.result?.user)
-                } else {
+                }else if(task.exception?.message.isNullOrEmpty()) {
+                    Log.d(TAG, "여기를 탔다2")
+                    Toast.makeText(this, task.exception?.message,Toast.LENGTH_LONG).show()
+                }else {
                     // 이미 계정이 존재할경우
                     signinEmail()
                 }
