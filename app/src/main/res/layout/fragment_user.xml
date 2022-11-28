@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:id="@+id/account_iv_follower"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -45,6 +46,7 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/account_iv_following"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"

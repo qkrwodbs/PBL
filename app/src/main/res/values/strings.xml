@@ -31,6 +31,7 @@
     <string name="follow_cancel">Follow cancel</string>
     <string name="profile">Profile</string>
     <string name="count_0">0</string>
+    <string name="friend">Friend</string>
 
     <!-- Alarm -->
     <string name="alarm_favorite">Liked the press</string>

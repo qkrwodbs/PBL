@@ -26,16 +26,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         setToolbarDefault()
         when (item.itemId) {
-            R.id.action_home -> {
-                var detailViewFragment = DetailViewFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_content, detailViewFragment).commit()
-                return true
-            }
             R.id.action_search -> {
                 var gridFragment = GridFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.main_content, gridFragment)
                     .commit()
+                return true
+            }
+            R.id.action_home -> {
+                var detailViewFragment = DetailViewFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_content, detailViewFragment).commit()
                 return true
             }
             R.id.action_add_photo -> {
@@ -46,12 +46,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 ) {
                     startActivity(Intent(this, AddPhotoActivity::class.java))
                 }
-                return true
-            }
-            R.id.action_favorite_alarm -> {
-                var alarmFragment = AlarmFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_content, alarmFragment)
-                    .commit()
                 return true
             }
             R.id.action_account -> {
